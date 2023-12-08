@@ -11,11 +11,14 @@ const VehicleUsage = () => {
   const [kilometres, setKilometres] = useState(0);
   console.log(business);
   return (
-    <Section title="Vehicle's Usage" className="drivers-details">
+    <Section title="Vehicle's Usage" className="section">
       <SectionCard padded={true}>
-        <FormGroup label="Usage">
-          Do you use this car for business purposes?
+        <FormGroup
+          key="business-form-group"
+          label="Do you use this car for business purposes?"
+        >
           <SegmentedControl
+            className="business-buttons"
             intent="primary"
             value={business}
             options={[
@@ -30,8 +33,11 @@ const VehicleUsage = () => {
             ]}
             onValueChange={(value) => setBusiness(value)}
           />
-          Select the number of kilometres you drive in a year, to the best of
-          your knowledge.
+        </FormGroup>
+        <FormGroup
+          label="Select the number of kilometres you drive in a year, to the best of
+          your knowledge"
+        >
           <SegmentedControl
             intent="primary"
             value={kilometres}

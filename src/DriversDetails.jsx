@@ -5,13 +5,13 @@ import {
   FormGroup,
   Section,
   SectionCard,
-  Divider,
 } from "@blueprintjs/core";
 import { useState } from "react";
 
 const DriversDetails = () => {
   const [accidents, setAccidents] = useState(0);
   const [claims, setClaims] = useState(0);
+  const [years, setYears] = useState(0);
 
   const currentDate = new Date();
   const date16YearsAgo = new Date(currentDate);
@@ -22,7 +22,7 @@ const DriversDetails = () => {
   const datePickerClasses = `${Classes.ELEVATION_1} date-of-birth-picker`;
 
   return (
-    <Section title="Driver's Details" className="drivers-details">
+    <Section title="Driver's Details" className="section">
       <SectionCard padded={true}>
         <FormGroup label="Date of Birth">
           <DatePicker3
@@ -55,6 +55,14 @@ const DriversDetails = () => {
             min={0}
             onValueChange={(value) => setClaims(value)}
             value={claims}
+          />
+        </FormGroup>
+        <FormGroup label="Years of driving experience">
+          <NumericInput
+            min={0}
+            max={90}
+            onValueChange={(value) => setYears(value)}
+            value={years}
           />
         </FormGroup>
       </SectionCard>
