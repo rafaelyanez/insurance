@@ -1,0 +1,47 @@
+{
+  "Count": 5,
+  "Message": "Results returned successfully",
+  "SearchCriteria": "Make:honda | ModelYear:2015 | VehicleType:car",
+  "Results": [
+    {
+      "Make_ID": 474,
+      "Make_Name": "HONDA",
+      "Model_ID": 1861,
+      "Model_Name": "Accord",
+      "VehicleTypeId": 2,
+      "VehicleTypeName": "Passenger Car"
+    },
+    {
+      "Make_ID": 474,
+      "Make_Name": "HONDA",
+      "Model_ID": 1863,
+      "Model_Name": "Civic",
+      "VehicleTypeId": 2,
+      "VehicleTypeName": "Passenger Car"
+    },
+    {
+      "Make_ID": 474,
+      "Make_Name": "HONDA",
+      "Model_ID": 1875,
+      "Model_Name": "FCX Clarity",
+      "VehicleTypeId": 2,
+      "VehicleTypeName": "Passenger Car"
+    },
+    {
+      "Make_ID": 474,
+      "Make_Name": "HONDA",
+      "Model_ID": 2127,
+      "Model_Name": "Fit",
+      "VehicleTypeId": 2,
+      "VehicleTypeName": "Passenger Car"
+    },
+    {
+      "Make_ID": 474,
+      "Make_Name": "HONDA",
+      "Model_ID": 2128,
+      "Model_Name": "CR-Z",
+      "VehicleTypeId": 2,
+      "VehicleTypeName": "Passenger Car"
+    }
+  ]
+}
