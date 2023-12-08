@@ -1,18 +1,19 @@
-import { NumericInput } from "@blueprintjs/core";
+import { NumericInput, Section, SectionCard } from "@blueprintjs/core";
 import { useState } from "react";
 
 const InsuranceHistory = () => {
   const [years, setYears] = useState(0);
   return (
-    <div className="insurance-history">
-      <label htmlFor="years-of-experience">
-        Insurance History
+    <Section title="Insurance History" className="drivers-details">
+      <SectionCard>
         <NumericInput
+          min={0}
+          max={90}
           onValueChange={(value) => setYears(value)}
           value={years}
         />
-      </label>
-    </div>
+      </SectionCard>
+    </Section>
   );
 };
 

@@ -1,4 +1,33 @@
 
+* {
+  box-sizing: border-box;
+ 
+}
+
+body {
+  /*
+  background-color: #FFFFFF;
+  background-image: url('./logo.svg');
+  background-size: 50rem;
+  background-repeat: no-repeat; 
+  background-position: bottom; 
+  */
+  margin: 0;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+
+.drivers-details {
+  width: 40rem !important;
+}
+
+.bp5-form-group {
+  align-items: center;
+}
+
+.date-of-birth-picker {
+  width: 15rem !important;
+}
 
 /* {
   box-sizing: border-box;
