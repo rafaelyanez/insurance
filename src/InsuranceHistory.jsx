@@ -7,8 +7,8 @@ import {
 import { useEffect, useState } from "react";
 
 const InsuranceHistory = (props) => {
-  const [years, setYears] = useState(0);
-
+  const years = props.yearsInsuranceHistory;
+  const setYears = props.setYearsInsuranceHistory;
   useEffect(() => {
     if (years > 0) {
       props.setInsuranceHistoryReady(true);

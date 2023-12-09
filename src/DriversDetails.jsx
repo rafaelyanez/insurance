@@ -8,9 +8,23 @@ import {
 } from "@blueprintjs/core";
 import { useEffect, useState } from "react";
 
+function calculateAge(birthdate) {
+  const today = new Date();
+  const birthDate = new Date(birthdate);
+  let age = today.getFullYear() - birthDate.getFullYear();
+  const m = today.getMonth() - birthDate.getMonth();
+
+  if (m < 0 || (m === 0 && today.getDate() < birthDate.getDate())) {
+    age--;
+  }
+  return age;
+}
+
 const DriversDetails = (props) => {
-  const [accidents, setAccidents] = useState(0);
-  const [claims, setClaims] = useState(0);
+  const accidents = props.accidents;
+  const setAccidents = props.setAccidents;
+  const claims = props.claims;
+  const setClaims = props.setClaims;
   const [years, setYears] = useState(0);
 
   const currentDate = new Date();
@@ -30,6 +44,10 @@ const DriversDetails = (props) => {
       props.setDriversDetailsReady(false);
     }
   }, [years]);
+
+  useEffect(() => {
+    props.setPersonAge(calculateAge(birthDate));
+  }, [birthDate]);
 
   return (
     <Section title="Driver's Details" className="section">

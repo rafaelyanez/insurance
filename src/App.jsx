@@ -11,6 +11,7 @@ import VehicleUsage from "./VehicleUsage";
 import InsuranceHistory from "./InsuranceHistory";
 import { useEffect, useState } from "react";
 import ResponseDialog from "./ResponseDialog";
+import useFetchQuote from "./useFetchQuote";
 
 function getTitle(isEnabled, text) {
   return (
@@ -31,6 +32,18 @@ function App() {
   const [insuranceHistoryReady, setInsuranceHistoryReady] = useState(false);
   const [isEnabledQuoteButton, setIsEnabledQuoteButton] = useState(false);
   const [isDialogOpen, setIsDialogOpen] = useState(false);
+  const [quoteData, setQuoteData] = useState();
+  const [quote, status] = useFetchQuote(quoteData);
+
+  // quote data
+  const [year, setYear] = useState("");
+  const [carCost, setCarCost] = useState(0);
+  const [business, setBusiness] = useState(false);
+  const [kilometres, setKilometres] = useState(-1);
+  const [accidents, setAccidents] = useState(0);
+  const [claims, setClaims] = useState(0);
+  const [personAge, setPersonAge] = useState();
+  const [yearsInsuranceHistory, setYearsInsuranceHistory] = useState(0);
 
   useEffect(() => {
     if (
@@ -50,6 +63,12 @@ function App() {
     insuranceHistoryReady,
   ]);
 
+  useEffect(() => {
+    if (status === "loaded") {
+      setIsDialogOpen(true);
+    }
+  }, [status]);
+
   const buttonClass = isEnabledQuoteButton
     ? "quote-button"
     : "quote-button-disabled";
@@ -59,7 +78,7 @@ function App() {
       <header>
         <center>
           <img src={logoImage} alt="Insurance logo" width="200" height="200" />
-          <h1>Car Insurance Quote</h1>
+          <h1>Auto Insurance Quote</h1>
         </center>
       </header>
 
@@ -75,19 +94,41 @@ function App() {
             id="vd"
             title={getTitle(vehicleDetailsReady, "Vehicle's Details")}
             panel={
-              <VehicleDetails setVehicleDetailsReady={setVehicleDetailsReady} />
+              <VehicleDetails
+                setVehicleDetailsReady={setVehicleDetailsReady}
+                year={year}
+                setYear={setYear}
+                carCost={carCost}
+                setCarCost={setCarCost}
+              />
             }
           ></Tab>
           <Tab
             id="vu"
             title={getTitle(vehicleUsageReady, "Vehicle's Usage")}
-            panel={<VehicleUsage setVehicleUsageReady={setVehicleUsageReady} />}
+            panel={
+              <VehicleUsage
+                setVehicleUsageReady={setVehicleUsageReady}
+                business={business}
+                setBusiness={setBusiness}
+                kilometres={kilometres}
+                setKilometres={setKilometres}
+              />
+            }
           ></Tab>
           <Tab
             id="dd"
             title={getTitle(driversDetailsReady, "Driver's Details")}
             panel={
-              <DriversDetails setDriversDetailsReady={setDriversDetailsReady} />
+              <DriversDetails
+                setDriversDetailsReady={setDriversDetailsReady}
+                accidents={accidents}
+                setAccidents={setAccidents}
+                claims={claims}
+                setClaims={setClaims}
+                personAge={personAge}
+                setPersonAge={setPersonAge}
+              />
             }
           ></Tab>
           <Tab
@@ -96,6 +137,8 @@ function App() {
             panel={
               <InsuranceHistory
                 setInsuranceHistoryReady={setInsuranceHistoryReady}
+                yearsInsuranceHistory={yearsInsuranceHistory}
+                setYearsInsuranceHistory={setYearsInsuranceHistory}
               />
             }
           ></Tab>
@@ -106,11 +149,24 @@ function App() {
             className={buttonClass}
             text="Get Quote"
             large={true}
-            onClick={() => setIsDialogOpen(true)}
+            loading={status === "loading"}
+            onClick={() => {
+              setQuoteData({
+                year,
+                carCost,
+                business,
+                kilometres,
+                accidents,
+                claims,
+                personAge,
+                yearsInsuranceHistory,
+              });
+            }}
           ></Button>
         </div>
         <ResponseDialog
           isOpen={isDialogOpen}
+          dialogBody={quote}
           setIsDialogOpen={setIsDialogOpen}
         ></ResponseDialog>
       </div>

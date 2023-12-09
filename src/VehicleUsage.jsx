@@ -8,8 +8,10 @@ import { useEffect } from "react";
 import { useState } from "react";
 
 const VehicleUsage = (props) => {
-  const [business, setBusiness] = useState(false);
-  const [kilometres, setKilometres] = useState(-1);
+  const business = props.business;
+  const setBusiness = props.setBusiness;
+  const kilometres = props.kilometres;
+  const setKilometres = props.setKilometres;
 
   useEffect(() => {
     if (kilometres > 0) {

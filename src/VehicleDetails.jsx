@@ -15,11 +15,13 @@ const YEARS = Array.from(
 );
 
 const VehicleDetails = (props) => {
+  const year = props.year;
+  const setYear = props.setYear;
+  const carCost = props.carCost;
+  const setCarCost = props.setCarCost;
   const [make, setMake] = useState("");
-  const [year, setYear] = useState("");
   const [model, setModel] = useState("");
   const [models, setModels] = useState([]);
-  const [carCost, setCarCost] = useState(0);
 
   useEffect(() => {
     requestModels();
