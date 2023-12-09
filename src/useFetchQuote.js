@@ -5,8 +5,8 @@ const cache = {};
 export default function useFetchQuote(quoteData) {
   const [quote, setQuote] = useState();
   const [status, setStatus] = useState("unloaded");
+  const [error, setError] = useState();
   useEffect(() => {
-    console.log(quoteData);
     if (quoteData) {
       const body = JSON.stringify(quoteData);
       if (cache[body]) {
@@ -19,17 +19,24 @@ export default function useFetchQuote(quoteData) {
     }
     async function requestQuote(body) {
       setStatus("loading");
-      const rest = await fetch(`http://localhost:8080/api/quote`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: body,
-      });
-      const json = await rest.json();
-      cache[body] = json.quote || {};
-      setQuote(cache[body]);
-      setStatus("loaded");
+      try {
+        throw new Error("Testing error");
+        const rest = await fetch(`http://localhost:8080/api/quote`, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: body,
+        });
+        const json = await rest.json();
+        cache[body] = json.quote || {};
+        setQuote(cache[body]);
+        setStatus("loaded");
+      } catch (error) {
+        setStatus("unloaded");
+        setError(error);
+        console.error(error);
+      }
     }
 
     function testLoading(body) {
@@ -50,5 +57,5 @@ Mauris imperdiet arcu at odio cursus dictum.
     }
   }, [quoteData]);
 
-  return [quote, status];
+  return [quote, status, error];
 }

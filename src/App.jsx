@@ -1,15 +1,16 @@
 import { createRoot } from "react-dom/client";
+import { useEffect, useState } from "react";
 import { Tabs, Tab, Icon, Button } from "@blueprintjs/core";
-import VehicleDetails from "./VehicleDetails";
-import DriversDetails from "./DriversDetails";
 
 import "@blueprintjs/core/lib/css/blueprint.css";
 import "@blueprintjs/icons/lib/css/blueprint-icons.css";
 import "@blueprintjs/datetime2/lib/css/blueprint-datetime2.css";
+
 import logoImage from "./logo.svg";
 import VehicleUsage from "./VehicleUsage";
 import InsuranceHistory from "./InsuranceHistory";
-import { useEffect, useState } from "react";
+import VehicleDetails from "./VehicleDetails";
+import DriversDetails from "./DriversDetails";
 import ResponseDialog from "./ResponseDialog";
 import useFetchQuote from "./useFetchQuote";
 
@@ -33,7 +34,7 @@ function App() {
   const [isEnabledQuoteButton, setIsEnabledQuoteButton] = useState(false);
   const [isDialogOpen, setIsDialogOpen] = useState(false);
   const [quoteData, setQuoteData] = useState();
-  const [quote, status] = useFetchQuote(quoteData);
+  const [quote, status, error] = useFetchQuote(quoteData);
 
   // quote data
   const [year, setYear] = useState("");
