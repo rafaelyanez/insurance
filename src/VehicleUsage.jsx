@@ -4,12 +4,19 @@ import {
   Section,
   SectionCard,
 } from "@blueprintjs/core";
+import { useEffect } from "react";
 import { useState } from "react";
 
-const VehicleUsage = () => {
-  const [business, setBusiness] = useState("no");
-  const [kilometres, setKilometres] = useState(0);
-  console.log(business);
+const VehicleUsage = (props) => {
+  const [business, setBusiness] = useState(false);
+  const [kilometres, setKilometres] = useState(-1);
+
+  useEffect(() => {
+    if (kilometres > 0) {
+      props.setVehicleUsageReady(true);
+    }
+  }, [kilometres]);
+
   return (
     <Section title="Vehicle's Usage" className="section">
       <SectionCard padded={true}>
@@ -24,11 +31,11 @@ const VehicleUsage = () => {
             options={[
               {
                 label: "Yes",
-                value: "yes",
+                value: true,
               },
               {
                 label: "No",
-                value: "no",
+                value: false,
               },
             ]}
             onValueChange={(value) => setBusiness(value)}

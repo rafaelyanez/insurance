@@ -6,9 +6,9 @@ import {
   Section,
   SectionCard,
 } from "@blueprintjs/core";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
-const DriversDetails = () => {
+const DriversDetails = (props) => {
   const [accidents, setAccidents] = useState(0);
   const [claims, setClaims] = useState(0);
   const [years, setYears] = useState(0);
@@ -16,10 +16,20 @@ const DriversDetails = () => {
   const currentDate = new Date();
   const date16YearsAgo = new Date(currentDate);
   date16YearsAgo.setFullYear(currentDate.getFullYear() - 16);
+
   const [birthDate, setBirthDate] = useState(date16YearsAgo);
+
   const date100YearsAgo = new Date(currentDate);
   date100YearsAgo.setFullYear(currentDate.getFullYear() - 100);
   const datePickerClasses = `${Classes.ELEVATION_1} date-of-birth-picker`;
+
+  useEffect(() => {
+    if (years > 0) {
+      props.setDriversDetailsReady(true);
+    } else {
+      props.setDriversDetailsReady(false);
+    }
+  }, [years]);
 
   return (
     <Section title="Driver's Details" className="section">

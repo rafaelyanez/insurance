@@ -6,7 +6,6 @@ import {
   NumericInput,
   Section,
   SectionCard,
-  Divider,
 } from "@blueprintjs/core";
 import { IconNames } from "@blueprintjs/icons";
 const MAKE = ["HONDA", "TOYOTA", "CHEVROLET", "FORD", "HYUNDAI"];
@@ -15,7 +14,7 @@ const YEARS = Array.from(
   (val, index) => new Date().getFullYear() - index
 );
 
-const VehicleDetails = () => {
+const VehicleDetails = (props) => {
   const [make, setMake] = useState("");
   const [year, setYear] = useState("");
   const [model, setModel] = useState("");
@@ -26,14 +25,24 @@ const VehicleDetails = () => {
     requestModels();
   }, [make, year]);
 
+  useEffect(() => {
+    if (make !== "" && year !== "" && model !== "" && carCost > 0) {
+      props.setVehicleDetailsReady(true);
+    } else {
+      props.setVehicleDetailsReady(false);
+    }
+  }, [make, year, model, carCost]);
+
   async function requestModels() {
-    const res = await fetch(
-      `https://vpic.nhtsa.dot.gov/api/vehicles/GetModelsForMakeYear/make/${make}/modelyear/${year}/vehicletype/car?format=json`
-    );
+    if (make !== "" && year !== "") {
+      const res = await fetch(
+        `https://vpic.nhtsa.dot.gov/api/vehicles/GetModelsForMakeYear/make/${make}/modelyear/${year}/vehicletype/car?format=json`
+      );
 
-    const json = await res.json();
+      const json = await res.json();
 
-    setModels(json.Results);
+      setModels(json.Results);
+    }
   }
 
   return (
@@ -68,6 +77,7 @@ const VehicleDetails = () => {
             <HTMLSelect
               id="year"
               className="bp3-html-select"
+              disabled={!make}
               value={year}
               onChange={(e) => {
                 setYear(e.target.value);

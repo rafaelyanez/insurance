@@ -4,10 +4,18 @@ import {
   SectionCard,
   FormGroup,
 } from "@blueprintjs/core";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
-const InsuranceHistory = () => {
+const InsuranceHistory = (props) => {
   const [years, setYears] = useState(0);
+
+  useEffect(() => {
+    if (years > 0) {
+      props.setInsuranceHistoryReady(true);
+    } else {
+      props.setInsuranceHistoryReady(false);
+    }
+  }, [years]);
   return (
     <Section title="Insurance History" className="section">
       <SectionCard>
@@ -22,6 +30,7 @@ const InsuranceHistory = () => {
           <NumericInput
             min={0}
             max={90}
+            allowNumericCharactersOnly={true}
             onValueChange={(value) => setYears(value)}
             value={years}
           />
