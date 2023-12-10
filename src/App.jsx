@@ -167,7 +167,7 @@ function App() {
         </div>
         <ResponseDialog
           isOpen={isDialogOpen}
-          dialogBody={quote}
+          dialogBody={quote?.premium}
           setIsDialogOpen={setIsDialogOpen}
         ></ResponseDialog>
       </div>
