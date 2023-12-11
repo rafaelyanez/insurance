@@ -155,7 +155,8 @@ function App() {
             large={true}
             loading={status === "loading"}
             onClick={() => {
-              console.log(`on click ${year}`);
+              console.log(`on click`);
+              const salt = Math.random();
               setQuoteData({
                 year,
                 carCost,
@@ -166,6 +167,7 @@ function App() {
                 personAge,
                 yearsInsuranceHistory,
                 yearsOfExperience,
+                salt,
               });
             }}
           ></Button>
