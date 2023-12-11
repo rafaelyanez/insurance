@@ -11,7 +11,7 @@ const ResponseDialog = (props) => {
       canOutsideClickClose={false}
       onClose={() => {
         props.setIsDialogOpen(false);
-        props.setQuoteData();
+        props.setQuoteData({});
       }}
     >
       <DialogBody>

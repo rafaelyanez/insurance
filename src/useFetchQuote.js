@@ -6,7 +6,7 @@ export default function useFetchQuote(quoteData) {
   const [quote, setQuote] = useState();
   const [status, setStatus] = useState("unloaded");
   useEffect(() => {
-    if (quoteData) {
+    if (quoteData && quoteData.personAge) {
       const body = JSON.stringify(quoteData);
       if (cache[body]) {
         setQuote(cache[body]);
