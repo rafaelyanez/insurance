@@ -155,6 +155,7 @@ function App() {
             large={true}
             loading={status === "loading"}
             onClick={() => {
+              console.log(`on click ${year}`);
               setQuoteData({
                 year,
                 carCost,
