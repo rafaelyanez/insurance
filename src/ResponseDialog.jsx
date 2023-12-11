@@ -29,7 +29,7 @@ const ResponseDialog = (props) => {
             {props?.quote?.success ? (
               <>
                 Your Premium is ${premium}, if you decide to pay monthly your
-                payments would be ${(premium / 12).toFixed()}. Your reference
+                payments would be ${(premium / 12).toFixed(2)}. Your reference
                 number is: #{props?.quote?.reference}
               </>
             ) : (
