@@ -34,7 +34,7 @@ const ResponseDialog = (props) => {
               </>
             ) : (
               <>
-                <h3>Please Call Us</h3> Gvien the provided information, you'll
+                <h3>Please Call Us</h3> Given the provided information, you'll
                 need to speak with one of our Advisors to ensure you get the
                 right coverage for your needs. Please call us at 1-800-ASIGURARE
               </>
