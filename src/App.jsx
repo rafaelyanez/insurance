@@ -38,7 +38,7 @@ function App() {
 
   // quote data
   const [year, setYear] = useState("");
-  const [carCost, setCarCost] = useState();
+  const [carCost, setCarCost] = useState(0);
   const [business, setBusiness] = useState(false);
   const [kilometres, setKilometres] = useState();
   const [accidents, setAccidents] = useState(0);
