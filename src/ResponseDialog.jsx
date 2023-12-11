@@ -10,8 +10,8 @@ const ResponseDialog = (props) => {
       onClose={() => props.setIsDialogOpen(false)}
     >
       <DialogBody>
-        {props.quote.success
-          ? props.quote.premium
+        {props?.quote?.success
+          ? props?.quote?.premium
           : "Please Contact our Representatives"}
       </DialogBody>
     </Dialog>
