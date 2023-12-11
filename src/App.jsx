@@ -170,6 +170,7 @@ function App() {
           ></Button>
         </div>
         <ResponseDialog
+          setQuoteData={setQuoteData}
           isDialogOpen={isDialogOpen}
           quote={quote}
           setIsDialogOpen={setIsDialogOpen}
