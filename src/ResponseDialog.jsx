@@ -10,8 +10,9 @@ const ResponseDialog = (props) => {
       canEscapeKeyClose={true}
       canOutsideClickClose={false}
       onClose={() => {
-        props.setIsDialogOpen(false);
+        console.log(`on close dialog`);
         props.setQuoteData({});
+        props.setIsDialogOpen(false);
       }}
     >
       <DialogBody>
