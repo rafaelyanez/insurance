@@ -1,70 +1,34 @@
-# Getting Started with Create React App
+# Insurance Quote Frontend application
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
-
-## Available Scripts
-
-In the project directory, you can run:
-
-### `npm start`
-
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
-
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+This project was created using React with Vite as the build tool. The Node version required > v20.10.0.
+Once installed Node just the code can be compiled with:
 
 ### `npm run build`
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Right now the URL to the backend is hardcoded in the `useFetchQuote.js` file it needs to be changed in order to make it run locally
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+The project was deployed on Google App Engine and is accesible in this URL `https://frontend-dot-insurance-407608.uk.r.appspot.com`
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+The interface is divided in 4 sections:
 
-### `npm run eject`
+## Vehicle's Details
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+It contains the Make, Year, Model and Purchase Price
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## Vehicle's Usage
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+It contains the question of the purpose of the vehicle, if it is for business or not and the Mileage range estimated by the user
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+## Drive's Details
 
-## Learn More
+Includes the Date of Birth of the driver, the traffic violations or accidents, the number of claims and the years of driving experience
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## Insurance History
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+Contains the number of years of auto insurance reported by the user
 
-### Code Splitting
+### Getting the Quote
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Once all the sections are completed, a green mark will appear beside each section, then the `Get Quote` button will become enabled and once pressed, a call to the back end will be made
+giving two possible answers, the Quote with the Reference number, the Premium and the monthly payments. The other response is a message asking the user to call the company to talk to an
+Advisor to get an adequate quote for the specific needs.
