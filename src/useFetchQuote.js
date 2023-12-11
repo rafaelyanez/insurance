@@ -10,6 +10,7 @@ export default function useFetchQuote(quoteData) {
       const body = JSON.stringify(quoteData);
       if (cache[body]) {
         setQuote(cache[body]);
+        setStatus("loaded");
       } else {
         console.log(JSON.stringify(body));
         requestQuote(body);
