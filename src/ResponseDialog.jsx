@@ -12,9 +12,7 @@ const ResponseDialog = (props) => {
       onClose={() => props.setIsDialogOpen(false)}
     >
       <DialogBody>
-        {props?.quote?.success ? (
-          premium
-        ) : (
+        {
           <Callout
             icon={
               props?.quote?.success
@@ -42,7 +40,7 @@ const ResponseDialog = (props) => {
               </>
             )}
           </Callout>
-        )}
+        }
       </DialogBody>
     </Dialog>
   );
