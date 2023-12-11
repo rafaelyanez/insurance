@@ -8,6 +8,8 @@ import {
 } from "@blueprintjs/core";
 import { useEffect, useState } from "react";
 
+import { convertToPositiveInteger } from "./utils/utils";
+
 function calculateAge(birthdate) {
   const today = new Date();
   const birthDate = new Date(birthdate);
@@ -39,7 +41,7 @@ const DriversDetails = (props) => {
   const datePickerClasses = `${Classes.ELEVATION_1} date-of-birth-picker`;
 
   useEffect(() => {
-    if (yearsOfExperience > 0) {
+    if (yearsOfExperience) {
       props.setDriversDetailsReady(true);
     } else {
       props.setDriversDetailsReady(false);
@@ -90,7 +92,9 @@ const DriversDetails = (props) => {
           <NumericInput
             min={0}
             max={90}
-            onValueChange={(value) => setYearsOfExperience(value)}
+            onValueChange={(_, value) =>
+              setYearsOfExperience(convertToPositiveInteger(value).toString())
+            }
             value={yearsOfExperience}
           />
         </FormGroup>

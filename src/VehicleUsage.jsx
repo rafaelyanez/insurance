@@ -5,7 +5,6 @@ import {
   SectionCard,
 } from "@blueprintjs/core";
 import { useEffect } from "react";
-import { useState } from "react";
 
 const VehicleUsage = (props) => {
   const business = props.business;
@@ -14,7 +13,7 @@ const VehicleUsage = (props) => {
   const setKilometres = props.setKilometres;
 
   useEffect(() => {
-    if (kilometres > 0) {
+    if (kilometres > -1) {
       props.setVehicleUsageReady(true);
     }
   }, [kilometres]);

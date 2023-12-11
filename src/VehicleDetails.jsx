@@ -8,6 +8,7 @@ import {
   SectionCard,
 } from "@blueprintjs/core";
 import { IconNames } from "@blueprintjs/icons";
+
 const MAKE = ["HONDA", "TOYOTA", "CHEVROLET", "FORD", "HYUNDAI"];
 const YEARS = Array.from(
   new Array(40),
@@ -125,7 +126,6 @@ const VehicleDetails = (props) => {
             id="carCost"
             min={0}
             leftIcon={IconNames.DOLLAR}
-            locale="en-CA"
             buttonPosition="none"
             value={carCost}
             placeholder="Enter the amount you payed for the car..."

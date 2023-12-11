@@ -38,14 +38,14 @@ function App() {
 
   // quote data
   const [year, setYear] = useState("");
-  const [carCost, setCarCost] = useState(0);
+  const [carCost, setCarCost] = useState();
   const [business, setBusiness] = useState(false);
-  const [kilometres, setKilometres] = useState(-1);
+  const [kilometres, setKilometres] = useState();
   const [accidents, setAccidents] = useState(0);
   const [claims, setClaims] = useState(0);
   const [personAge, setPersonAge] = useState();
-  const [yearsInsuranceHistory, setYearsInsuranceHistory] = useState(0);
-  const [yearsOfExperience, setYearsOfExperience] = useState(0);
+  const [yearsInsuranceHistory, setYearsInsuranceHistory] = useState();
+  const [yearsOfExperience, setYearsOfExperience] = useState();
 
   useEffect(() => {
     if (

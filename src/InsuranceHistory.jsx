@@ -4,13 +4,15 @@ import {
   SectionCard,
   FormGroup,
 } from "@blueprintjs/core";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
+
+import { convertToPositiveInteger } from "./utils/utils";
 
 const InsuranceHistory = (props) => {
   const years = props.yearsInsuranceHistory;
   const setYears = props.setYearsInsuranceHistory;
   useEffect(() => {
-    if (years > 0) {
+    if (years) {
       props.setInsuranceHistoryReady(true);
     } else {
       props.setInsuranceHistoryReady(false);
@@ -31,7 +33,9 @@ const InsuranceHistory = (props) => {
             min={0}
             max={90}
             allowNumericCharactersOnly={true}
-            onValueChange={(value) => setYears(value)}
+            onValueChange={(_, value) =>
+              setYears(convertToPositiveInteger(value).toString())
+            }
             value={years}
           />
         </FormGroup>
