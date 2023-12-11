@@ -9,7 +9,11 @@ const ResponseDialog = (props) => {
       canOutsideClickClose={false}
       onClose={() => props.setIsDialogOpen(false)}
     >
-      <DialogBody>{props.dialogBody}</DialogBody>
+      <DialogBody>
+        {props.quote.success
+          ? props.quote.premium
+          : "Please Contact our Representatives"}
+      </DialogBody>
     </Dialog>
   );
 };

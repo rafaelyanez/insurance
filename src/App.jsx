@@ -34,7 +34,7 @@ function App() {
   const [isEnabledQuoteButton, setIsEnabledQuoteButton] = useState(false);
   const [isDialogOpen, setIsDialogOpen] = useState(false);
   const [quoteData, setQuoteData] = useState();
-  const [quote, status, error] = useFetchQuote(quoteData);
+  const [quote, status] = useFetchQuote(quoteData);
 
   // quote data
   const [year, setYear] = useState("");
@@ -45,6 +45,7 @@ function App() {
   const [claims, setClaims] = useState(0);
   const [personAge, setPersonAge] = useState();
   const [yearsInsuranceHistory, setYearsInsuranceHistory] = useState(0);
+  const [yearsOfExperience, setYearsOfExperience] = useState(0);
 
   useEffect(() => {
     if (
@@ -129,6 +130,8 @@ function App() {
                 setClaims={setClaims}
                 personAge={personAge}
                 setPersonAge={setPersonAge}
+                yearsOfExperience={yearsOfExperience}
+                setYearsOfExperience={setYearsOfExperience}
               />
             }
           ></Tab>
@@ -161,13 +164,14 @@ function App() {
                 claims,
                 personAge,
                 yearsInsuranceHistory,
+                yearsOfExperience,
               });
             }}
           ></Button>
         </div>
         <ResponseDialog
           isOpen={isDialogOpen}
-          dialogBody={quote?.premium}
+          quote={quote}
           setIsDialogOpen={setIsDialogOpen}
         ></ResponseDialog>
       </div>

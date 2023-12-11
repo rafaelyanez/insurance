@@ -25,7 +25,8 @@ const DriversDetails = (props) => {
   const setAccidents = props.setAccidents;
   const claims = props.claims;
   const setClaims = props.setClaims;
-  const [years, setYears] = useState(0);
+  const yearsOfExperience = props.yearsOfExperience;
+  const setYearsOfExperience = props.setYearsOfExperience;
 
   const currentDate = new Date();
   const date16YearsAgo = new Date(currentDate);
@@ -38,12 +39,12 @@ const DriversDetails = (props) => {
   const datePickerClasses = `${Classes.ELEVATION_1} date-of-birth-picker`;
 
   useEffect(() => {
-    if (years > 0) {
+    if (yearsOfExperience > 0) {
       props.setDriversDetailsReady(true);
     } else {
       props.setDriversDetailsReady(false);
     }
-  }, [years]);
+  }, [yearsOfExperience]);
 
   useEffect(() => {
     props.setPersonAge(calculateAge(birthDate));
@@ -89,8 +90,8 @@ const DriversDetails = (props) => {
           <NumericInput
             min={0}
             max={90}
-            onValueChange={(value) => setYears(value)}
-            value={years}
+            onValueChange={(value) => setYearsOfExperience(value)}
+            value={yearsOfExperience}
           />
         </FormGroup>
       </SectionCard>

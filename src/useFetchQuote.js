@@ -13,7 +13,6 @@ export default function useFetchQuote(quoteData) {
       } else {
         console.log(JSON.stringify(body));
         requestQuote(body);
-        //testLoading(body);
       }
     }
     async function requestQuote(body) {
@@ -38,23 +37,6 @@ export default function useFetchQuote(quoteData) {
         setStatus("unloaded");
         console.error(error);
       }
-    }
-
-    function testLoading(body) {
-      console.log(JSON.stringify(body));
-      const text = `
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam eu diam rutrum, lacinia sem at, tempus ligula. 
-Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Etiam rutrum dapibus ullamcorper. 
-Quisque ac pellentesque erat, vel suscipit dui. Aliquam erat volutpat. Vivamus vel turpis quis augue sagittis ultricies. 
-Nunc felis metus, volutpat a est at, ultrices vestibulum metus. Phasellus id augue eu ligula imperdiet tempus. Sed volutpat volutpat eros, luctus maximus felis facilisis quis. 
-Sed ut ligula est. Cras venenatis tristique est, at convallis lacus suscipit sed. Donec pulvinar laoreet aliquet. Curabitur lacinia tempus feugiat. Ut sagittis diam non nunc suscipit tincidunt. 
-Mauris imperdiet arcu at odio cursus dictum. 
-  `;
-      setStatus("loading");
-      setTimeout(() => {
-        setQuote(text);
-        setStatus("loaded");
-      }, 4000);
     }
   }, [quoteData]);
 
